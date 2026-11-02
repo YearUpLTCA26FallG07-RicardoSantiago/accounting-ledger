@@ -30,8 +30,24 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-
             // Switch Cases for main menu
+            switch (choice) {
+                case 1:
+                    addDeposit();
+                    break;
+
+                //case 2:
+                    //break;
+
+                //case 3:
+                    //break;
+
+                case 4:
+                    running = false;
+                    System.out.println("\nHave a nice Day!");
+                    break;
+
+            }
 
         }
 
