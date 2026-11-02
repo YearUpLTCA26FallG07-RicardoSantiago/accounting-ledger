@@ -1,13 +1,10 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 
 import static com.pluralsight.console.scanner;
 
@@ -62,8 +59,10 @@ public class Main {
     // Add Deposit method
 
     public static void addDeposit() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
-        System.out.println("\n=======ADD DEPOSIT=======");
+
+                System.out.println("\n=======ADD DEPOSIT=======");
 
         System.out.println("Item: ");
         String item = scanner.nextLine();
@@ -83,15 +82,20 @@ public class Main {
         deposit.setVendor(vendor);
         deposit.setPrice(price);
 
-        try(FileWriter writer = new FileWriter("Transactions.csv",true)) {
+        try (FileWriter writer = new FileWriter("Transactions.csv",true)) {
 
-            String newitem = deposit.getDate()+","+deposit.getTime()+","+deposit.getItem()+","+deposit.getVendor()+","+deposit.getPrice()+",";
+            String newitem = deposit.getDate()+","+deposit.getTime().format(formatter)+","+deposit.getItem()+","+deposit.getVendor()+","+deposit.getPrice();
+
+            writer.write(newitem + "\n");
+        }
+        catch (IOException e) {
+            System.out.println("Error writing in the file");
+        }
 
         System.out.println("\nDeposit Added:");
         System.out.println(deposit);
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+
     }
 }
