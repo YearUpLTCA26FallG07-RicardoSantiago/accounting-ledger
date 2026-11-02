@@ -3,6 +3,8 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,6 +39,35 @@ public class Main {
 
 
 
+
+    }
+
+    // Add Deposit method
+
+    public static void addDeposit() {
+
+        System.out.println("\n=======ADD DEPOSIT=======");
+
+        System.out.println("Item: ");
+        String item = scanner.nextLine();
+
+        System.out.println("Vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.println("Price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        transaction deposit = new transaction();
+
+        deposit.setDate(LocalDate.now());
+        deposit.setTime(LocalTime.now());
+        deposit.setItem(item);
+        deposit.setVendor(vendor);
+        deposit.setPrice(price);
+
+        System.out.println("\nDeposit Added:");
+        System.out.println(deposit);
 
     }
 }
