@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -82,8 +83,15 @@ public class Main {
         deposit.setVendor(vendor);
         deposit.setPrice(price);
 
+        try(FileWriter writer = new FileWriter("Transactions.csv",true)) {
+
+            String newitem = deposit.getDate()+","+deposit.getTime()+","+deposit.getItem()+","+deposit.getVendor()+","+deposit.getPrice()+",";
+
         System.out.println("\nDeposit Added:");
         System.out.println(deposit);
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
