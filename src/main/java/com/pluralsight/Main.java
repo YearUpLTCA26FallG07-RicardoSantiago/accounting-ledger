@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 import static com.pluralsight.console.scanner;
 
@@ -34,8 +35,9 @@ public class Main {
                     addDeposit();
                     break;
 
-                //case 2:
-                    //break;
+                case 2:
+                    makePayment();
+                    break;
 
                 //case 3:
                     //break;
@@ -82,7 +84,7 @@ public class Main {
         deposit.setVendor(vendor);
         deposit.setPrice(price);
 
-        try (FileWriter writer = new FileWriter("Transactions.csv",true)) {
+        try  (FileWriter writer = new FileWriter("Transactions.csv",true)) {
 
             String newitem = deposit.getDate()+","+deposit.getTime().format(formatter)+","+deposit.getItem()+","+deposit.getVendor()+","+deposit.getPrice();
 
@@ -98,4 +100,39 @@ public class Main {
 
 
     }
-}
+
+    //Payment Method
+
+    public static void makePayment() {
+
+        System.out.println("=======Who would you like to pay: =======");
+        String vender = scanner.nextLine();
+
+        System.out.print("Enter how much you would like to pay: ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("What is the payment for: ");
+        String itemp = scanner.nextLine();
+
+        String date = LocalDate.now().toString();
+
+        try {
+            FileWriter writer = new FileWriter("Transactions.csv", true);
+
+            writer.write(date + "," + vender + "," + itemp + "," + -(amount) + "\n");
+            writer.close();
+
+            System.out.println("\nPayment success");
+        } catch (IOException e) {
+            System.out.println("Error with payment.\nPayment unsuccessful");
+            }
+        }
+
+
+
+        }
+
+
+
+
