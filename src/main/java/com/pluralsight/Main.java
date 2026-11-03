@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 import static com.pluralsight.console.scanner;
 
@@ -39,8 +38,9 @@ public class Main {
                     makePayment();
                     break;
 
-                //case 3:
-                    //break;
+                case 3:
+                    displayLedger();
+                    break;
 
                 case 4:
                     running = false;
@@ -128,6 +128,56 @@ public class Main {
             System.out.println("Error with payment.\nPayment unsuccessful");
             }
         }
+
+        //Ledger Method
+
+    public static void displayLedger() {
+        boolean inLedger = true;
+
+                while (inLedger) {
+                    System.out.println("\n=======Ledger=======");
+                    System.out.println("\n What would you like to do?");
+                    System.out.println("1. Display all entries");
+                    System.out.println("2. Show all Deposits");
+                    System.out.println("3. Show all Payments");
+                    System.out.println("4. Go to Reports");
+                    System.out.println("5. Go back to home screen");
+
+                    //Swicth for Ledger
+
+                    int choice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (choice) {
+                        //case 1:
+                            //break;
+//
+                        //case 2:
+                            //break;
+
+                        //case 3:
+                            //break;
+
+                        //case 4:
+                            //break;
+
+                        case 5:
+                            inLedger = false;
+                            System.out.println("\nGoing back to home");
+                            break;
+
+                    }
+                }
+    }
+
+    //                          Reports screen method
+
+    public static void displayReports(){
+
+        boolean inReports = true;
+
+        
+    }
 
 
 
