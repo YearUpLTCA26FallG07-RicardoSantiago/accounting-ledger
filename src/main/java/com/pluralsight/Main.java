@@ -161,7 +161,8 @@ public class Main {
                         //case 2:
                             //break;
 
-                        //case 3:
+                        case 3:
+                            showAllPayments();
                             //break;
 
                         case 4:
@@ -225,12 +226,38 @@ public class Main {
 
                 System.out.println(line);
             }
-            fileScanner.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("Error, File not found");
         }
     }
+
+                         //Show all Payments Method
+    public static void showAllPayments() {
+
+        try { Scanner fileScanner = new Scanner(new File("Transactions.csv"));
+
+            while (fileScanner.hasNextLine()) {
+
+                String line = fileScanner.nextLine();
+
+                String[] parts = line.split(",");
+
+                if (parts[4].equalsIgnoreCase("price")){
+                    continue;
+                }
+
+                double amount = Double.parseDouble(parts[4]);
+
+                if (amount < 0) {
+                    System.out.println(line);
+                }
+            }
+
+    } catch (FileNotFoundException e) {
+            System.out.println("Error. File not found");
+            }
+        }
 
 
     }
