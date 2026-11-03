@@ -2,13 +2,13 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.time.format.DateTimeFormatter;
 
 
 public class transaction {
 
     private LocalDate date;
-    private LocalTime time ;
+    private LocalTime time;
     private String item;
     private String vendor;
     private double price;
@@ -55,7 +55,8 @@ public class transaction {
 
     @Override
     public String toString() {
-        return date + "|" + time + "|" + item + "|" + vendor + "|" +String.format("%.2f",price);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return date.format(formatter) + "|" + time.format(formatter) + "|" + item + "|" + vendor + "|" +String.format("%.2f",price);
 
 
     }

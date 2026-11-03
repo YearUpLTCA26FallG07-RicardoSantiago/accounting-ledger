@@ -107,23 +107,25 @@ public class Main {
     //Payment Method
 
     public static void makePayment() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
-        System.out.println("=======Who would you like to pay: =======");
+        System.out.println("\n=======Who would you like to pay: =======");
         String vender = scanner.nextLine();
 
-        System.out.print("Enter how much you would like to pay: ");
+        System.out.println("Enter how much you would like to pay: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.print("What is the payment for: ");
+        System.out.println("What is the payment for: ");
         String itemp = scanner.nextLine();
 
         String date = LocalDate.now().toString();
+        String time = LocalTime.now().format(formatter);
 
         try {
             FileWriter writer = new FileWriter("Transactions.csv", true);
 
-            writer.write(date + "," + vender + "," + itemp + "," + -(amount) + "\n");
+            writer.write(date +","+ time + "," + itemp + "," + vender + "," + -(amount) + "\n");
             writer.close();
 
             System.out.println("\nPayment success");
