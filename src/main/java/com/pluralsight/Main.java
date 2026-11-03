@@ -1,10 +1,13 @@
 package com.pluralsight;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import static com.pluralsight.console.scanner;
 
@@ -149,8 +152,9 @@ public class Main {
                     scanner.nextLine();
 
                     switch (choice) {
-                        //case 1:
-                            //break;
+                        case 1:
+                            showAllEntries();
+                            break;
 //
                         //case 2:
                             //break;
@@ -158,12 +162,12 @@ public class Main {
                         //case 3:
                             //break;
 
-                        //case 4:
-                            //break;
+                        case 4:
+                            displayReports();
+                            break;
 
                         case 5:
                             inLedger = false;
-                            System.out.println("\nGoing back to home");
                             break;
 
                     }
@@ -176,12 +180,58 @@ public class Main {
 
         boolean inReports = true;
 
-        
-    }
+        while(inReports) {
 
+            System.out.println("\n=======Reports=======");
+            System.out.println("\nWhat would you like to do?");
+            System.out.println("1. Search by Vendor");
+            System.out.println("2. Custom Search");
+            System.out.println("3. Go back to Ledger");
+
+            //              Switch for the Reports
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+
+               //case 1:
+                    //break;
+
+                //case 2:
+                    //break;
+
+                case 3:
+                    inReports = false;
+                    break;
+            }
 
 
         }
+
+
+    }
+                    // Ledger Show all reports method
+
+    public static void showAllEntries() {
+
+        try {
+            Scanner fileScanner = new Scanner(new File("Transactions.csv"));
+
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+
+                System.out.println(line);
+            }
+            fileScanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error, File not found");
+        }
+    }
+
+
+    }
 
 
 
