@@ -78,10 +78,23 @@ public class Main {
         System.out.println("Vendor: ");
         String vendor = scanner.nextLine();
 
-        System.out.println("Price: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
+        double price = 0;
 
+        while (true) {
+
+        System.out.println("Price: ");
+            if (scanner.hasNextDouble()) {
+                price = scanner.nextDouble();
+                scanner.nextLine();
+                if (price > 0) {
+                    break;
+                }
+                System.out.println("Error, price must be higher than 0");
+            }else {
+                System.out.println("Invalid input. Please enetr a number");
+                scanner.nextLine();
+            }
+            }
         transaction deposit = new transaction();
 
         deposit.setDate(LocalDate.now());
@@ -90,13 +103,12 @@ public class Main {
         deposit.setVendor(vendor);
         deposit.setPrice(price);
 
-        try  (FileWriter writer = new FileWriter("Transactions.csv",true)) {
+        try (FileWriter writer = new FileWriter("Transactions.csv", true)) {
 
             writer.write(deposit.toString() + "\n");
-
             transactions.add(deposit);
-        }
-        catch (IOException e) {
+
+        } catch (IOException e) {
             System.out.println("Error writing in the file");
         }
 
@@ -117,6 +129,7 @@ public class Main {
         System.out.println("Enter how much you would like to pay: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
+
 
         System.out.println("What is the payment for: ");
         String itemp = scanner.nextLine();
