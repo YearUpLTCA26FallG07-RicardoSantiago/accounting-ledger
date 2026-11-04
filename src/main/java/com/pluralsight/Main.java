@@ -7,13 +7,16 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.pluralsight.console.scanner;
 
 public class Main {
+    static ArrayList<transaction> transactions = new ArrayList<>();
 
     public static void main(String[] args){
+
 
         // Home Screen
 
@@ -325,7 +328,35 @@ public class Main {
 
     }
 
+                          // Method to keep csv stored
+
+    public static void loadTransactions() {
+
+        try (Scanner fileScanner = new Scanner(new File("Transactiopns.csv"))) {
+
+            while (fileScanner.hasNextLine()) {
+
+                String line = fileScanner.nextLine();
+                String[] parts = line.split("\\|");
+
+                transaction t = new transaction();
+
+                t.setDate(LocalDate.parse(parts[0]));
+                t.setTime(LocalTime.parse(parts[1]));
+                t.setItem(parts[2]);
+                t.setVendor(parts[3]);
+                t.setPrice(Double.parseDouble(parts[4]));
+
+                transactions.add(t);
+            }
+        }catch (FileNotFoundException e){
+            System.out.println("Error. File was not found");
+        }
     }
+    }
+
+                        
+
 
 
 
