@@ -64,7 +64,7 @@ public class Main {
     // Add Deposit method
 
     public static void addDeposit() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
 
 
                 System.out.println("\n=======ADD DEPOSIT=======");
@@ -89,9 +89,7 @@ public class Main {
 
         try  (FileWriter writer = new FileWriter("Transactions.csv",true)) {
 
-            String newitem = deposit.getDate()+","+deposit.getTime().format(formatter)+","+deposit.getItem()+","+deposit.getVendor()+","+deposit.getPrice();
-
-            writer.write(newitem + "\n");
+            writer.write(deposit.toString() + "\n");
         }
         catch (IOException e) {
             System.out.println("Error writing in the file");
@@ -107,10 +105,9 @@ public class Main {
     //Payment Method
 
     public static void makePayment() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
         System.out.println("\n=======Who would you like to pay: =======");
-        String vender = scanner.nextLine();
+        String vendor = scanner.nextLine();
 
         System.out.println("Enter how much you would like to pay: ");
         double amount = scanner.nextDouble();
@@ -120,12 +117,12 @@ public class Main {
         String itemp = scanner.nextLine();
 
         String date = LocalDate.now().toString();
-        String time = LocalTime.now().format(formatter);
+        String time = LocalTime.now().toString();
 
         try {
             FileWriter writer = new FileWriter("Transactions.csv", true);
 
-            writer.write(date +","+ time + "," + itemp + "," + vender + "," + -(amount) + "\n");
+            writer.write(date.formatted() +"|"+ time.formatted() + "|" + itemp + "|" + vendor + "|" + -(amount) + "\n");
             writer.close();
 
             System.out.println("\nPayment success");
@@ -243,7 +240,7 @@ public class Main {
 
                 String line = fileScanner.nextLine();
 
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\|");
 
                 if (parts[4].equalsIgnoreCase("price")){
                     continue;

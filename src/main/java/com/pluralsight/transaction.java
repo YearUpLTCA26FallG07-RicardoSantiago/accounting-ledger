@@ -55,8 +55,10 @@ public class transaction {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return date.format(formatter) + "|" + time.format(formatter) + "|" + item + "|" + vendor + "|" +String.format("%.2f",price);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        return date.format(dateFormatter) + "|" + time.format(timeFormatter) + "|" + item + "|" + vendor + "|" +String.format("%.2f",price);
 
 
     }
