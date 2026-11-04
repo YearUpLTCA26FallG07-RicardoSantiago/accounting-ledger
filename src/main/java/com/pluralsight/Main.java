@@ -16,7 +16,7 @@ public class Main {
     static ArrayList<transaction> transactions = new ArrayList<>();
 
     public static void main(String[] args){
-
+        loadTransactions();
 
         // Home Screen
 
@@ -93,6 +93,8 @@ public class Main {
         try  (FileWriter writer = new FileWriter("Transactions.csv",true)) {
 
             writer.write(deposit.toString() + "\n");
+
+            transactions.add(deposit);
         }
         catch (IOException e) {
             System.out.println("Error writing in the file");
@@ -131,8 +133,10 @@ public class Main {
         try {
             FileWriter writer = new FileWriter("Transactions.csv", true);
 
-            writer.write(payment.toString());
+            writer.write(payment.toString()+ "\n");
             writer.close();
+
+            transactions.add(payment);
 
             System.out.println("\nPayment to "+ vendor+ " Has been sent");
             System.out.println(payment);
@@ -355,7 +359,7 @@ public class Main {
     }
     }
 
-                        
+
 
 
 
