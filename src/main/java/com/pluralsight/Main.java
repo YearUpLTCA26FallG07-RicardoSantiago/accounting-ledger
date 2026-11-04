@@ -158,12 +158,13 @@ public class Main {
                             showAllEntries();
                             break;
 //
-                        //case 2:
-                            //break;
+                        case 2:
+                            showAllDeposits();
+                            break;
 
                         case 3:
                             showAllPayments();
-                            //break;
+                            break;
 
                         case 4:
                             displayReports();
@@ -198,8 +199,9 @@ public class Main {
 
             switch (choice) {
 
-               //case 1:
-                    //break;
+               case 1:
+                   searchByVendor();
+                    break;
 
                 //case 2:
                     //break;
@@ -259,8 +261,70 @@ public class Main {
             }
         }
 
+                                  // Show all deposits method
+
+    public static void showAllDeposits() {
+
+        try { Scanner fileScanner = new Scanner(new File("Transactions.csv"));
+
+            while (fileScanner.hasNextLine()) {
+
+                String line = fileScanner.nextLine();
+
+                String[] parts = line.split("\\|");
+
+                if (parts[4].equalsIgnoreCase("price")){
+                    continue;
+                }
+
+                double amount = Double.parseDouble(parts[4]);
+
+                if (amount > 0) {
+                    System.out.println(line);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. File not found");
+        }
+    }
+
+                          // Reports Search by vendor Method
+
+    public static void searchByVendor() {
+
+        try {
+            Scanner fileScanner = new Scanner(new File("Transactions.csv"));
+                System.out.println("Enter the name of the vendor");
+                String vendorSearch = scanner.nextLine();
+
+            while (fileScanner.hasNextLine()) {
+
+                String line = fileScanner.nextLine();
+
+                String[] parts = line.split("\\|");
+
+                if (parts[3].equalsIgnoreCase("vendor")) {
+                    continue;
+                }
+                String vendor = parts[3];
+
+
+                if (vendor.equalsIgnoreCase(vendorSearch)) {
+                    System.out.println(line);
+            }
+                }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. File not found");
+        }
 
     }
+
+    }
+
+
+
 
 
 
