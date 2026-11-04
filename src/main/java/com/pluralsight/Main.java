@@ -116,16 +116,23 @@ public class Main {
         System.out.println("What is the payment for: ");
         String itemp = scanner.nextLine();
 
-        String date = LocalDate.now().toString();
-        String time = LocalTime.now().toString();
+        transaction payment = new transaction();
+        payment.setDate(LocalDate.now());
+        payment.setTime(LocalTime.now());
+        payment.setItem(itemp);
+        payment.setVendor(vendor);
+        payment.setPrice(amount);
+
+
 
         try {
             FileWriter writer = new FileWriter("Transactions.csv", true);
 
-            writer.write(date.formatted() +"|"+ time.formatted() + "|" + itemp + "|" + vendor + "|" + -(amount) + "\n");
+            writer.write(payment.toString());
             writer.close();
 
-            System.out.println("\nPayment success");
+            System.out.println("\nPayment to "+ vendor+ " Has been sent");
+            System.out.println(payment);
         } catch (IOException e) {
             System.out.println("Error with payment.\nPayment unsuccessful");
             }
