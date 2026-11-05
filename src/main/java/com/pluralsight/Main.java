@@ -49,7 +49,7 @@ public class Main {
             int choice;
 
             while (!scanner.hasNextInt()) {
-                System.out.println("Invalid input. Please enter a number 1-4");
+                System.out.println(BRIGHT_RED + "Invalid input. Please enter a number 1-4" + RESET);
                 scanner.nextLine();
             }
 
@@ -85,9 +85,10 @@ public class Main {
     public static void addDeposit() {
 
 
-
-                System.out.println("\n=======ADD DEPOSIT=======");
-
+        System.out.println(BLACK_BG);
+        System.out.println( GREEN + "\n==============================");
+        System.out.println( "      What was the sale?");
+        System.out.println("==============================");
         System.out.println("Item: ");
         String item = scanner.nextLine();
 
@@ -128,8 +129,8 @@ public class Main {
             System.out.println("Error writing in the file");
         }
 
-        System.out.println("\nDeposit Added:");
-        System.out.println(deposit);
+        System.out.println("\nSale Recorded:\n");
+        System.out.println(deposit + RESET);
 
 
 
@@ -139,6 +140,7 @@ public class Main {
 
     public static void makePayment() {
 
+        System.out.println( BLACK_BG + RED);
         System.out.println("\n=======Who would you like to pay: =======");
         String vendor = scanner.nextLine();
 
