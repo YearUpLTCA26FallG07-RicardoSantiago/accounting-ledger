@@ -141,15 +141,20 @@ public class Main {
     public static void makePayment() {
 
         System.out.println( BLACK_BG + RED);
-        System.out.println("\n=======Who would you like to pay: =======");
+        System.out.println("==============================");
+        System.out.println("   Who was it bought from?");
+        System.out.println("==============================");
         String vendor = scanner.nextLine();
 
-        System.out.println("Enter how much you would like to pay: ");
+        System.out.println("==============================");
+        System.out.println("    How much did it cost?");
+        System.out.println("==============================");
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
-
-        System.out.println("What is the payment for: ");
+        System.out.println("==============================");
+        System.out.println("     What was purchased?");
+        System.out.println("==============================");
         String itemp = scanner.nextLine();
 
         transaction payment = new transaction();
@@ -169,8 +174,8 @@ public class Main {
 
             transactions.add(payment);
 
-            System.out.println("\nPayment to "+ vendor+ " Has been sent");
-            System.out.println(payment);
+            System.out.println("\nPayment to "+ vendor+ " Has been recorded");
+            System.out.println(payment + RESET);
         } catch (IOException e) {
             System.out.println("Error with payment.\nPayment unsuccessful");
             }
