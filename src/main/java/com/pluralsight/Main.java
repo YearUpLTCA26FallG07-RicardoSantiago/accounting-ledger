@@ -31,7 +31,14 @@ public class Main {
             System.out.println("4. Exit");
             System.out.println("\nPlease select an option");
 
-            int choice = scanner.nextInt();
+            int choice;
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number 1-4");
+                scanner.nextLine();
+            }
+
+             choice = scanner.nextInt();
             scanner.nextLine();
 
             // Switch Cases for main menu
@@ -172,9 +179,16 @@ public class Main {
                     System.out.println("4. Go to Reports");
                     System.out.println("5. Go back to home screen");
 
+                    int choice;
+
+                    while (!scanner.hasNextInt()) {
+                        System.out.println("Invalid input. Please enter a number 1-5");
+                        scanner.nextLine();
+                    }
+
                     //Swicth for Ledger
 
-                    int choice = scanner.nextInt();
+                     choice = scanner.nextInt();
                     scanner.nextLine();
 
                     switch (choice) {
@@ -216,9 +230,16 @@ public class Main {
             System.out.println("2. Custom Search");
             System.out.println("3. Go back to Ledger");
 
+            int choice;
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number 1-5");
+                scanner.nextLine();
+            }
+
             //              Switch for the Reports
 
-            int choice = scanner.nextInt();
+             choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
