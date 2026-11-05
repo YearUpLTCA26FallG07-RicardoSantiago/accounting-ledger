@@ -35,16 +35,16 @@ public class Main {
 
         while(running) {
             System.out.print(BLACK_BG);
-            System.out.println(CYAN + "================================================");
-            System.out.println(WHITE + "                    WELCOME                     ");
-            System.out.println(CYAN + "================================================");
-            System.out.println(WHITE + "\nWhat would you like to do?\n");
+            System.out.println(CYAN+ "================================================");
+            System.out.println(BRIGHT_WHITE+"                    WELCOME                     ");
+            System.out.println(CYAN+ "================================================");
+            System.out.println(BRIGHT_WHITE+"\nWhat would you like to do?\n");
             System.out.println(GREEN + "1. Record a Sale");
             System.out.println(RED + "2. Record a purchase (Debit)");
             System.out.println(PURPLE + "3. Display Ledger");
             System.out.println(YELLOW + "4. Exit");
-            System.out.println(CYAN + "\n================================================");
-            System.out.print(WHITE + "Select an option: " + RESET);
+            System.out.println(CYAN+"\n================================================");
+            System.out.print(BRIGHT_WHITE+"Select an option: ");
 
             int choice;
 
@@ -162,7 +162,7 @@ public class Main {
         payment.setTime(LocalTime.now());
         payment.setItem(itemp);
         payment.setVendor(vendor);
-        payment.setPrice(amount);
+        payment.setPrice(-amount);
 
 
 
@@ -174,7 +174,7 @@ public class Main {
 
             transactions.add(payment);
 
-            System.out.println("\nPayment to "+ vendor+ " Has been recorded");
+            System.out.println("\nPayment to "+ vendor+ " Has been recorded\n");
             System.out.println(payment + RESET);
         } catch (IOException e) {
             System.out.println("Error with payment.\nPayment unsuccessful");
@@ -247,11 +247,18 @@ public class Main {
 
         while(inReports) {
 
-            System.out.println("\n=======Reports=======");
-            System.out.println("\nWhat would you like to do?");
-            System.out.println("1. Search by Vendor");
-            System.out.println("2. Custom Search");
-            System.out.println("3. Go back to Ledger");
+            System.out.println( BLACK_BG + BRIGHT_CYAN);
+            System.out.println("==============================");
+            System.out.println();
+            System.out.println("           Reports            ");
+            System.out.println();
+            System.out.println("==============================");
+            System.out.println("  What would you like to do?");
+            System.out.println("==============================");
+            System.out.println(GREEN+"1. Search by Vendor");
+            System.out.println(BRIGHT_BLUE+"2. Custom Search");
+            System.out.println(PURPLE+"3. Return to Ledger");
+            System.out.println(BRIGHT_CYAN+"==============================");
 
             int choice;
 
