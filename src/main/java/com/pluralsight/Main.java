@@ -187,18 +187,25 @@ public class Main {
         boolean inLedger = true;
 
                 while (inLedger) {
-                    System.out.println("\n=======Ledger=======");
-                    System.out.println("\n What would you like to do?");
-                    System.out.println("1. Display all entries");
-                    System.out.println("2. Show all Deposits");
-                    System.out.println("3. Show all Payments");
-                    System.out.println("4. Go to Reports");
-                    System.out.println("5. Go back to home screen");
+                    System.out.println( BLACK_BG + PURPLE);
+                    System.out.println("==============================");
+                    System.out.println();
+                    System.out.println("            LEDGER            ");
+                    System.out.println();
+                    System.out.println("==============================");
+                    System.out.println("\n  What would you like to do?\n");
+                    System.out.println("==============================");
+                    System.out.println(BLUE+"1. Display all entries");
+                    System.out.println(GREEN+"2. Show all Sales");
+                    System.out.println(RED+"3. Show all Purchases");
+                    System.out.println(BRIGHT_CYAN+"4. Go to Reports");
+                    System.out.println(YELLOW+"5. Go back to home screen");
+                    System.out.println(PURPLE+"==============================");
 
                     int choice;
 
                     while (!scanner.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number 1-5");
+                        System.out.println(RED+ "Invalid input. Please enter a number 1-5");
                         scanner.nextLine();
                     }
 
